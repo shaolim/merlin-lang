@@ -1,8 +1,8 @@
 package parser
 
 import (
-	"github/michaellimmm/merlin-lang/ast"
-	"github/michaellimmm/merlin-lang/lexer"
+	"github/shaolim/merlin-lang/ast"
+	"github/shaolim/merlin-lang/lexer"
 	"testing"
 )
 

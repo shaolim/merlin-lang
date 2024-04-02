@@ -1,7 +1,7 @@
 package ast
 
 import (
-	"github/michaellimmm/merlin-lang/token"
+	"github/shaolim/merlin-lang/token"
 )
 
 type Node interface {
