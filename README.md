@@ -1,3 +1,3 @@
-# Milang
+# Merlin lang
 
-Milang (Monkey Intepreter Language) is simple programming language
+Merlin is simple programming language

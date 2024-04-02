@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github/michaellimmm/milang/repl"
+	"github/michaellimmm/merlin-lang/repl"
 	"os"
 	"os/user"
 )

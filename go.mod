@@ -1,3 +1,3 @@
-module github/michaellimmm/milang
+module github/michaellimmm/merlin-lang
 
 go 1.22.0

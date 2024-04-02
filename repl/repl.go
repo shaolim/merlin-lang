@@ -3,8 +3,8 @@ package repl
 import (
 	"bufio"
 	"fmt"
-	"github/michaellimmm/milang/lexer"
-	"github/michaellimmm/milang/token"
+	"github/michaellimmm/merlin-lang/lexer"
+	"github/michaellimmm/merlin-lang/token"
 	"io"
 )
 

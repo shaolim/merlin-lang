@@ -1,8 +1,6 @@
 package lexer
 
-import (
-	"github/michaellimmm/milang/token"
-)
+import "github/michaellimmm/merlin-lang/token"
 
 type Lexer struct {
 	input        string

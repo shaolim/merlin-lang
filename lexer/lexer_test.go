@@ -1,7 +1,7 @@
 package lexer
 
 import (
-	"github/michaellimmm/milang/token"
+	"github/michaellimmm/merlin-lang/token"
 	"testing"
 )
 
