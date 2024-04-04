@@ -1,6 +1,7 @@
 package ast
 
 import (
+	"fmt"
 	"github/shaolim/merlin-lang/token"
 )
 
@@ -44,5 +45,8 @@ type LetStatement struct {
 	Value Expression
 }
 
-func (ls *LetStatement) statementNode()       {}
-func (ls *LetStatement) TokenLiteral() string { return ls.Token.Literal }
+func (ls *LetStatement) statementNode() {}
+func (ls *LetStatement) TokenLiteral() string {
+	fmt.Printf("aa %+v \n", ls)
+	return ls.Token.Literal
+}

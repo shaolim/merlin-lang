@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"fmt"
 	"github/shaolim/merlin-lang/ast"
 	"github/shaolim/merlin-lang/lexer"
 	"github/shaolim/merlin-lang/token"
@@ -9,12 +10,16 @@ import (
 type Parser struct {
 	l *lexer.Lexer
 
+	errors    []string
 	curToken  token.Token
 	peerToken token.Token
 }
 
 func New(l *lexer.Lexer) *Parser {
-	p := &Parser{l: l}
+	p := &Parser{
+		l:      l,
+		errors: []string{},
+	}
 
 	// Read two tokens, so curToken and peekToken are both set
 	p.nextToken()
@@ -40,35 +45,45 @@ func (p *Parser) ParserProgram() *ast.Program {
 		p.nextToken()
 	}
 
+	fmt.Printf("program %+v", program)
+
 	return program
 }
 
 func (p *Parser) parseStatement() ast.Statement {
 	switch p.curToken.Type {
 	case token.LET:
-		return p.parserLetStatement()
+		result := p.parserLetStatement()
+		fmt.Printf("curr token Let %+v \n", result)
+		return result
 	default:
 		return nil
 	}
 }
 
 func (p *Parser) parserLetStatement() *ast.LetStatement {
+
 	stmt := &ast.LetStatement{Token: p.curToken}
 
+	fmt.Printf("token literal %+v  --- %+v \n", stmt, stmt.TokenLiteral())
+
 	if !p.expectPeek(token.IDENT) {
+		fmt.Println("ident 1 ")
 		return nil
 	}
 
 	stmt.Name = &ast.Identifier{Token: p.curToken, Value: p.curToken.Literal}
 
-	if !p.expectPeek(token.IDENT) {
+	if !p.expectPeek(token.ASSIGN) {
+		fmt.Println("ident 2")
 		return nil
 	}
 
 	// TODO: We're skipping the expressions until we
 	// encounter a semicolon
-	if !p.curTokenIs(token.ASSIGN) {
-		return nil
+	if !p.curTokenIs(token.SEMICOLON) {
+		fmt.Println("assign 3")
+		p.nextToken()
 	}
 
 	return stmt
